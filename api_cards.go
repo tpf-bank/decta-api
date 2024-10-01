@@ -237,12 +237,6 @@ func (a *CardsAPIService) GetCardData1Execute(r ApiGetCardData1Request) (*CardDa
 	if r.param1 == nil {
 		return localVarReturnValue, nil, reportError("param1 is required and must be specified")
 	}
-	if r.tokenHeader == nil {
-		return localVarReturnValue, nil, reportError("tokenHeader is required and must be specified")
-	}
-	if r.tokenSignature == nil {
-		return localVarReturnValue, nil, reportError("tokenSignature is required and must be specified")
-	}
 
 	parameterAddToHeaderOrQuery(localVarQueryParams, "param1", r.param1, "form", "")
 	// to determine the Content-Type header
@@ -383,12 +377,6 @@ func (a *CardsAPIService) GetCardData2Execute(r ApiGetCardData2Request) (*CardDa
 	localVarFormParams := url.Values{}
 	if r.param1 == nil {
 		return localVarReturnValue, nil, reportError("param1 is required and must be specified")
-	}
-	if r.tokenHeader == nil {
-		return localVarReturnValue, nil, reportError("tokenHeader is required and must be specified")
-	}
-	if r.tokenSignature == nil {
-		return localVarReturnValue, nil, reportError("tokenSignature is required and must be specified")
 	}
 
 	parameterAddToHeaderOrQuery(localVarQueryParams, "param1", r.param1, "form", "")
@@ -533,12 +521,6 @@ func (a *CardsAPIService) GetCardData3Execute(r ApiGetCardData3Request) (*CardDa
 	if r.secret == nil {
 		return localVarReturnValue, nil, reportError("secret is required and must be specified")
 	}
-	if r.tokenHeader == nil {
-		return localVarReturnValue, nil, reportError("tokenHeader is required and must be specified")
-	}
-	if r.tokenSignature == nil {
-		return localVarReturnValue, nil, reportError("tokenSignature is required and must be specified")
-	}
 
 	parameterAddToHeaderOrQuery(localVarQueryParams, "secret", r.secret, "form", "")
 	// to determine the Content-Type header
@@ -679,12 +661,6 @@ func (a *CardsAPIService) GetCardData4Execute(r ApiGetCardData4Request) (*Data4,
 	localVarFormParams := url.Values{}
 	if r.secret == nil {
 		return localVarReturnValue, nil, reportError("secret is required and must be specified")
-	}
-	if r.tokenHeader == nil {
-		return localVarReturnValue, nil, reportError("tokenHeader is required and must be specified")
-	}
-	if r.tokenSignature == nil {
-		return localVarReturnValue, nil, reportError("tokenSignature is required and must be specified")
 	}
 
 	parameterAddToHeaderOrQuery(localVarQueryParams, "secret", r.secret, "form", "")
@@ -827,12 +803,6 @@ func (a *CardsAPIService) GetCardData5Execute(r ApiGetCardData5Request) (*CardDa
 	if r.param1 == nil {
 		return localVarReturnValue, nil, reportError("param1 is required and must be specified")
 	}
-	if r.tokenHeader == nil {
-		return localVarReturnValue, nil, reportError("tokenHeader is required and must be specified")
-	}
-	if r.tokenSignature == nil {
-		return localVarReturnValue, nil, reportError("tokenSignature is required and must be specified")
-	}
 
 	parameterAddToHeaderOrQuery(localVarQueryParams, "param1", r.param1, "form", "")
 	// to determine the Content-Type header
@@ -964,12 +934,6 @@ func (a *CardsAPIService) GetInfoExecute(r ApiGetInfoRequest) (*CardInfo, *http.
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.tokenHeader == nil {
-		return localVarReturnValue, nil, reportError("tokenHeader is required and must be specified")
-	}
-	if r.tokenSignature == nil {
-		return localVarReturnValue, nil, reportError("tokenSignature is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1152,12 +1116,6 @@ func (a *CardsAPIService) GetListExecute(r ApiGetListRequest) (*CardInfoDataArra
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.tokenHeader == nil {
-		return localVarReturnValue, nil, reportError("tokenHeader is required and must be specified")
-	}
-	if r.tokenSignature == nil {
-		return localVarReturnValue, nil, reportError("tokenSignature is required and must be specified")
-	}
 
 	if r.cardName != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "cardName", r.cardName, "form", "")
@@ -1323,12 +1281,6 @@ func (a *CardsAPIService) GetTspSecretExecute(r ApiGetTspSecretRequest) (*TspSec
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.tokenHeader == nil {
-		return localVarReturnValue, nil, reportError("tokenHeader is required and must be specified")
-	}
-	if r.tokenSignature == nil {
-		return localVarReturnValue, nil, reportError("tokenSignature is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1459,12 +1411,6 @@ func (a *CardsAPIService) RenewCardExecute(r ApiRenewCardRequest) (*CardRenewInf
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.tokenHeader == nil {
-		return localVarReturnValue, nil, reportError("tokenHeader is required and must be specified")
-	}
-	if r.tokenSignature == nil {
-		return localVarReturnValue, nil, reportError("tokenSignature is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1595,12 +1541,6 @@ func (a *CardsAPIService) ReplaceCardExecute(r ApiReplaceCardRequest) (*CardInfo
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.tokenHeader == nil {
-		return localVarReturnValue, nil, reportError("tokenHeader is required and must be specified")
-	}
-	if r.tokenSignature == nil {
-		return localVarReturnValue, nil, reportError("tokenSignature is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

@@ -127,12 +127,6 @@ func (a *TransactionsAPIService) CardTransactionsExecute(r ApiCardTransactionsRe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.tokenHeader == nil {
-		return localVarReturnValue, nil, reportError("tokenHeader is required and must be specified")
-	}
-	if r.tokenSignature == nil {
-		return localVarReturnValue, nil, reportError("tokenSignature is required and must be specified")
-	}
 
 	if r.includeAccountTransactions != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "includeAccountTransactions", r.includeAccountTransactions, "form", "")
@@ -295,12 +289,7 @@ func (a *TransactionsAPIService) DoTransactionExecute(r ApiDoTransactionRequest)
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.tokenHeader == nil {
-		return localVarReturnValue, nil, reportError("tokenHeader is required and must be specified")
-	}
-	if r.tokenSignature == nil {
-		return localVarReturnValue, nil, reportError("tokenSignature is required and must be specified")
-	}
+
 	if r.transaction == nil {
 		return localVarReturnValue, nil, reportError("transaction is required and must be specified")
 	}

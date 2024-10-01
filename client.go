@@ -168,6 +168,9 @@ func parameterValueToString(obj interface{}, key string) string {
 // parameterAddToHeaderOrQuery adds the provided object to the request header or url query
 // supporting deep object syntax
 func parameterAddToHeaderOrQuery(headerOrQueryParams interface{}, keyPrefix string, obj interface{}, style string, collectionType string) {
+	if obj == nil {
+		return
+	}
 	var v = reflect.ValueOf(obj)
 	var value = ""
 	if v == reflect.ValueOf(nil) {

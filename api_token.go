@@ -230,12 +230,6 @@ func (a *TokenAPIService) GetApplePayReferenceDataExecute(r ApiGetApplePayRefere
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.tokenHeader == nil {
-		return localVarReturnValue, nil, reportError("tokenHeader is required and must be specified")
-	}
-	if r.tokenSignature == nil {
-		return localVarReturnValue, nil, reportError("tokenSignature is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -366,12 +360,6 @@ func (a *TokenAPIService) GetGooglePayReferenceDataExecute(r ApiGetGooglePayRefe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.tokenHeader == nil {
-		return localVarReturnValue, nil, reportError("tokenHeader is required and must be specified")
-	}
-	if r.tokenSignature == nil {
-		return localVarReturnValue, nil, reportError("tokenSignature is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -500,12 +488,6 @@ func (a *TokenAPIService) GetPanReferenceDataExecute(r ApiGetPanReferenceDataReq
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.tokenHeader == nil {
-		return localVarReturnValue, nil, reportError("tokenHeader is required and must be specified")
-	}
-	if r.tokenSignature == nil {
-		return localVarReturnValue, nil, reportError("tokenSignature is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -634,12 +616,6 @@ func (a *TokenAPIService) GetTokenReferenceDataExecute(r ApiGetTokenReferenceDat
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.tokenHeader == nil {
-		return localVarReturnValue, nil, reportError("tokenHeader is required and must be specified")
-	}
-	if r.tokenSignature == nil {
-		return localVarReturnValue, nil, reportError("tokenSignature is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -770,12 +746,6 @@ func (a *TokenAPIService) GetTokensExecute(r ApiGetTokensRequest) (*TokenInfo, *
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.tokenHeader == nil {
-		return localVarReturnValue, nil, reportError("tokenHeader is required and must be specified")
-	}
-	if r.tokenSignature == nil {
-		return localVarReturnValue, nil, reportError("tokenSignature is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

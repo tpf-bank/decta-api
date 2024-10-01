@@ -117,12 +117,6 @@ func (a *CardOrderAPIService) GetOrdersListExecute(r ApiGetOrdersListRequest) ([
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.tokenHeader == nil {
-		return localVarReturnValue, nil, reportError("tokenHeader is required and must be specified")
-	}
-	if r.tokenSignature == nil {
-		return localVarReturnValue, nil, reportError("tokenSignature is required and must be specified")
-	}
 
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "form", "")
@@ -273,12 +267,7 @@ func (a *CardOrderAPIService) OrderCardExecute(r ApiOrderCardRequest) (*OrderCar
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.tokenHeader == nil {
-		return localVarReturnValue, nil, reportError("tokenHeader is required and must be specified")
-	}
-	if r.tokenSignature == nil {
-		return localVarReturnValue, nil, reportError("tokenSignature is required and must be specified")
-	}
+
 	if r.cardOrder == nil {
 		return localVarReturnValue, nil, reportError("cardOrder is required and must be specified")
 	}
@@ -300,8 +289,12 @@ func (a *CardOrderAPIService) OrderCardExecute(r ApiOrderCardRequest) (*OrderCar
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "token-header", r.tokenHeader, "simple", "")
-	parameterAddToHeaderOrQuery(localVarHeaderParams, "token-signature", r.tokenSignature, "simple", "")
+	if r.tokenHeader != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "token-header", r.tokenHeader, "simple", "")
+	}
+	if r.tokenSignature != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "token-signature", r.tokenSignature, "simple", "")
+	}
 	if r.requestId != nil {
 		parameterAddToHeaderOrQuery(localVarHeaderParams, "Request-Id", r.requestId, "simple", "")
 	}
@@ -416,12 +409,7 @@ func (a *CardOrderAPIService) OrderGiftCardExecute(r ApiOrderGiftCardRequest) (*
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.tokenHeader == nil {
-		return localVarReturnValue, nil, reportError("tokenHeader is required and must be specified")
-	}
-	if r.tokenSignature == nil {
-		return localVarReturnValue, nil, reportError("tokenSignature is required and must be specified")
-	}
+
 	if r.giftCardOrder == nil {
 		return localVarReturnValue, nil, reportError("giftCardOrder is required and must be specified")
 	}

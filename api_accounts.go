@@ -101,12 +101,6 @@ func (a *AccountsAPIService) GetTransactionsQueueInfoExecute(r ApiGetTransaction
 	if r.clientId == nil {
 		return localVarReturnValue, nil, reportError("clientId is required and must be specified")
 	}
-	if r.tokenHeader == nil {
-		return localVarReturnValue, nil, reportError("tokenHeader is required and must be specified")
-	}
-	if r.tokenSignature == nil {
-		return localVarReturnValue, nil, reportError("tokenSignature is required and must be specified")
-	}
 
 	parameterAddToHeaderOrQuery(localVarQueryParams, "clientId", r.clientId, "form", "")
 	// to determine the Content-Type header

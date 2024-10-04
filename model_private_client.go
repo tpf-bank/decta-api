@@ -41,6 +41,7 @@ type PrivateClient struct {
 	AdditionalContact *Contact `json:"additionalContact,omitempty"`
 	// Free field for custom use, e.g. Backup mobile phone number used for courier deliveries, when main phone is not accessible.
 	UserDefinedField1 *string `json:"userDefinedField1,omitempty"`
+	Pep               string  `json:"pep"`
 }
 
 type _PrivateClient PrivateClient
@@ -432,6 +433,11 @@ func (o *PrivateClient) SetUserDefinedField1(v string) {
 	o.UserDefinedField1 = &v
 }
 
+// SetPep set pep
+func (o *PrivateClient) SetPep(v string) {
+	o.Pep = v
+}
+
 func (o PrivateClient) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -473,6 +479,9 @@ func (o PrivateClient) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.UserDefinedField1) {
 		toSerialize["userDefinedField1"] = o.UserDefinedField1
+	}
+	if !IsNil(o.Pep) {
+		toSerialize["pep"] = o.Pep
 	}
 	return toSerialize, nil
 }

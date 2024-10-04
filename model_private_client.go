@@ -31,7 +31,7 @@ type PrivateClient struct {
 	// Communication language(ISO 639-1)
 	Language *string `json:"language,omitempty"`
 	// ID of customer on Decta partner side (allows to bind multiple cards to one customer). Length 18 symbols.
-	Id       string   `json:"id"`
+	Id       *string  `json:"id"`
 	Document Document `json:"document"`
 	// Additional information according to agreement with Decta
 	Comment        *string              `json:"comment,omitempty"`
@@ -52,7 +52,7 @@ type _PrivateClient PrivateClient
 // will change when the set of required properties is changed
 func NewPrivateClient(id string, document Document) *PrivateClient {
 	this := PrivateClient{}
-	this.Id = id
+	this.Id = &id
 	this.Document = document
 	return &this
 }
@@ -226,12 +226,7 @@ func (o *PrivateClient) SetLanguage(v string) {
 }
 
 // GetId returns the Id field value
-func (o *PrivateClient) GetId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
+func (o *PrivateClient) GetId() *string {
 	return o.Id
 }
 
@@ -241,12 +236,12 @@ func (o *PrivateClient) GetIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Id, true
+	return o.Id, true
 }
 
 // SetId sets field value
 func (o *PrivateClient) SetId(v string) {
-	o.Id = v
+	o.Id = &v
 }
 
 // GetDocument returns the Document field value
@@ -463,7 +458,9 @@ func (o PrivateClient) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Language) {
 		toSerialize["language"] = o.Language
 	}
-	toSerialize["id"] = o.Id
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	toSerialize["document"] = o.Document
 	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment

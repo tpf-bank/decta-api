@@ -98,12 +98,7 @@ func (a *TokenAPIService) ChangeTokenStatusExecute(r ApiChangeTokenStatusRequest
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.tokenHeader == nil {
-		return nil, reportError("tokenHeader is required and must be specified")
-	}
-	if r.tokenSignature == nil {
-		return nil, reportError("tokenSignature is required and must be specified")
-	}
+
 	if r.tokenStatusChange == nil {
 		return nil, reportError("tokenStatusChange is required and must be specified")
 	}

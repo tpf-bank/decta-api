@@ -94,12 +94,6 @@ func (a *DectaSecureAPIService) ResetDeviceExecute(r ApiResetDeviceRequest) (*ht
 	if strlen(r.username) > 19 {
 		return nil, reportError("username must have less than 19 elements")
 	}
-	if r.tokenHeader == nil {
-		return nil, reportError("tokenHeader is required and must be specified")
-	}
-	if r.tokenSignature == nil {
-		return nil, reportError("tokenSignature is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

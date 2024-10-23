@@ -94,12 +94,7 @@ func (a *LimitsAPIService) EditLimitsExecute(r ApiEditLimitsRequest) (*http.Resp
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.tokenHeader == nil {
-		return nil, reportError("tokenHeader is required and must be specified")
-	}
-	if r.tokenSignature == nil {
-		return nil, reportError("tokenSignature is required and must be specified")
-	}
+
 	if r.limitsData == nil {
 		return nil, reportError("limitsData is required and must be specified")
 	}

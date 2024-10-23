@@ -95,12 +95,7 @@ func (a *CardsAPIService) AssignPinExecute(r ApiAssignPinRequest) (*http.Respons
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.tokenHeader == nil {
-		return nil, reportError("tokenHeader is required and must be specified")
-	}
-	if r.tokenSignature == nil {
-		return nil, reportError("tokenSignature is required and must be specified")
-	}
+
 	if r.pinAssign == nil {
 		return nil, reportError("pinAssign is required and must be specified")
 	}
@@ -1724,12 +1719,7 @@ func (a *CardsAPIService) UpdateCardUserDefinedFieldsExecute(r ApiUpdateCardUser
 	if strlen(r.ppan) > 16 {
 		return nil, reportError("ppan must have less than 16 elements")
 	}
-	if r.tokenHeader == nil {
-		return nil, reportError("tokenHeader is required and must be specified")
-	}
-	if r.tokenSignature == nil {
-		return nil, reportError("tokenSignature is required and must be specified")
-	}
+
 	if r.cardUserDefinedFields == nil {
 		return nil, reportError("cardUserDefinedFields is required and must be specified")
 	}
@@ -1863,12 +1853,7 @@ func (a *CardsAPIService) UpdateStateExecute(r ApiUpdateStateRequest) (*http.Res
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.tokenHeader == nil {
-		return nil, reportError("tokenHeader is required and must be specified")
-	}
-	if r.tokenSignature == nil {
-		return nil, reportError("tokenSignature is required and must be specified")
-	}
+
 	if r.statusChange == nil {
 		return nil, reportError("statusChange is required and must be specified")
 	}

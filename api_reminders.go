@@ -222,12 +222,6 @@ func (a *RemindersAPIService) RemindPanCvvExecute(r ApiRemindPanCvvRequest) (*ht
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.tokenHeader == nil {
-		return nil, reportError("tokenHeader is required and must be specified")
-	}
-	if r.tokenSignature == nil {
-		return nil, reportError("tokenSignature is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -350,12 +344,6 @@ func (a *RemindersAPIService) RemindPinExecute(r ApiRemindPinRequest) (*http.Res
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.tokenHeader == nil {
-		return nil, reportError("tokenHeader is required and must be specified")
-	}
-	if r.tokenSignature == nil {
-		return nil, reportError("tokenSignature is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -484,12 +472,7 @@ func (a *RemindersAPIService) ResetPinTryCounterExecute(r ApiResetPinTryCounterR
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.tokenHeader == nil {
-		return nil, reportError("tokenHeader is required and must be specified")
-	}
-	if r.tokenSignature == nil {
-		return nil, reportError("tokenSignature is required and must be specified")
-	}
+
 	if r.pinTryReset == nil {
 		return nil, reportError("pinTryReset is required and must be specified")
 	}

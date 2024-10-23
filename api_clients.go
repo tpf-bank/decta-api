@@ -95,12 +95,7 @@ func (a *ClientsAPIService) ChangeDeliveryAddressExecute(r ApiChangeDeliveryAddr
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.tokenHeader == nil {
-		return nil, reportError("tokenHeader is required and must be specified")
-	}
-	if r.tokenSignature == nil {
-		return nil, reportError("tokenSignature is required and must be specified")
-	}
+
 	if r.deliveryAddress == nil {
 		return nil, reportError("deliveryAddress is required and must be specified")
 	}
@@ -571,12 +566,7 @@ func (a *ClientsAPIService) UpdateClientAddressExecute(r ApiUpdateClientAddressR
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.tokenHeader == nil {
-		return nil, reportError("tokenHeader is required and must be specified")
-	}
-	if r.tokenSignature == nil {
-		return nil, reportError("tokenSignature is required and must be specified")
-	}
+
 	if r.clientAddress == nil {
 		return nil, reportError("clientAddress is required and must be specified")
 	}
@@ -710,12 +700,6 @@ func (a *ClientsAPIService) UpdatePassphraseExecute(r ApiUpdatePassphraseRequest
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.tokenHeader == nil {
-		return nil, reportError("tokenHeader is required and must be specified")
-	}
-	if r.tokenSignature == nil {
-		return nil, reportError("tokenSignature is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -846,12 +830,7 @@ func (a *ClientsAPIService) UpdatePhoneExecute(r ApiUpdatePhoneRequest) (*http.R
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.tokenHeader == nil {
-		return nil, reportError("tokenHeader is required and must be specified")
-	}
-	if r.tokenSignature == nil {
-		return nil, reportError("tokenSignature is required and must be specified")
-	}
+
 	if r.phoneValue == nil {
 		return nil, reportError("phoneValue is required and must be specified")
 	}

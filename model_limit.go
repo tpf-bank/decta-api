@@ -225,7 +225,6 @@ func (o *Limit) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"id",
-		"key",
 	}
 
 	allProperties := make(map[string]interface{})

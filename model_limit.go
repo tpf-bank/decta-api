@@ -25,7 +25,7 @@ type Limit struct {
 	// Limit identifier description
 	Desc *string `json:"desc,omitempty"`
 	// Limit additional key
-	Key        string       `json:"key"`
+	Key        *string      `json:"key,omitempty"`
 	Individual *LimitValues `json:"individual,omitempty"`
 	Group      *LimitValues `json:"group,omitempty"`
 }
@@ -39,7 +39,7 @@ type _Limit Limit
 func NewLimit(id string, key string) *Limit {
 	this := Limit{}
 	this.Id = id
-	this.Key = key
+	this.Key = &key
 	return &this
 }
 
@@ -109,26 +109,34 @@ func (o *Limit) SetDesc(v string) {
 
 // GetKey returns the Key field value
 func (o *Limit) GetKey() string {
-	if o == nil {
+	if o == nil || IsNil(o.Key) {
 		var ret string
 		return ret
 	}
-
-	return o.Key
+	return *o.Key
 }
 
 // GetKeyOk returns a tuple with the Key field value
 // and a boolean to check if the value has been set.
 func (o *Limit) GetKeyOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Key) {
 		return nil, false
 	}
-	return &o.Key, true
+	return o.Key, true
+}
+
+// HasKey returns a boolean if a field has been set.
+func (o *Limit) HasKey() bool {
+	if o != nil && !IsNil(o.Key) {
+		return true
+	}
+
+	return false
 }
 
 // SetKey sets field value
 func (o *Limit) SetKey(v string) {
-	o.Key = v
+	o.Key = &v
 }
 
 // GetIndividual returns the Individual field value if set, zero value otherwise.
@@ -209,7 +217,9 @@ func (o Limit) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Desc) {
 		toSerialize["desc"] = o.Desc
 	}
-	toSerialize["key"] = o.Key
+	if !IsNil(o.Key) {
+		toSerialize["key"] = o.Key
+	}
 	if !IsNil(o.Individual) {
 		toSerialize["individual"] = o.Individual
 	}
@@ -225,7 +235,6 @@ func (o *Limit) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"id",
-		"key",
 	}
 
 	allProperties := make(map[string]interface{})

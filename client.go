@@ -39,6 +39,15 @@ var (
 	queryDescape    = strings.NewReplacer("%5B", "[", "%5D", "]")
 )
 
+type IAPIClient interface {
+	GetCardOrderAPI() ICardOrderAPIService
+	GetCardsAPI() ICardsAPIService
+	GetLimitsAPI() ILimitsAPIService
+	GetRemindersAPI() IRemindersAPIService
+	GetTransactionsAPI() ITransactionsAPIService
+	GetConfig() *Configuration
+}
+
 // APIClient manages communication with the Decta API API v2.11
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
@@ -51,21 +60,46 @@ type APIClient struct {
 
 	AuthorizationsAPI *AuthorizationsAPIService
 
-	CardOrderAPI *CardOrderAPIService
+	cardOrderAPI ICardOrderAPIService
 
-	CardsAPI *CardsAPIService
+	cardsAPI ICardsAPIService
 
 	ClientsAPI *ClientsAPIService
 
 	DectaSecureAPI *DectaSecureAPIService
 
-	LimitsAPI *LimitsAPIService
+	limitsAPI ILimitsAPIService
 
-	RemindersAPI *RemindersAPIService
+	remindersAPI IRemindersAPIService
 
 	TokenAPI *TokenAPIService
 
-	TransactionsAPI *TransactionsAPIService
+	transactionsAPI ITransactionsAPIService
+}
+
+// GetCardOrderAPI returns the cardsAPI service as ICardOrderAPIService
+func (c *APIClient) GetCardOrderAPI() ICardOrderAPIService {
+	return c.cardOrderAPI
+}
+
+// GetCardsAPI returns the cardsAPI service as ICardsAPIService
+func (c *APIClient) GetCardsAPI() ICardsAPIService {
+	return c.cardsAPI
+}
+
+// GetLimitsAPI returns the limitsAPI service as ILimitsAPIService
+func (c *APIClient) GetLimitsAPI() ILimitsAPIService {
+	return c.limitsAPI
+}
+
+// GetRemindersAPI returns the remindersAPI service as IRemindersAPIService
+func (c *APIClient) GetRemindersAPI() IRemindersAPIService {
+	return c.remindersAPI
+}
+
+// GetTransactionsAPI returns the remindersAPI service as ITransactionsAPIService
+func (c *APIClient) GetTransactionsAPI() ITransactionsAPIService {
+	return c.transactionsAPI
 }
 
 type service struct {
@@ -86,14 +120,14 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	// API Services
 	c.AccountsAPI = (*AccountsAPIService)(&c.common)
 	c.AuthorizationsAPI = (*AuthorizationsAPIService)(&c.common)
-	c.CardOrderAPI = (*CardOrderAPIService)(&c.common)
-	c.CardsAPI = (*CardsAPIService)(&c.common)
+	c.cardOrderAPI = (*CardOrderAPIService)(&c.common)
+	c.cardsAPI = (*CardsAPIService)(&c.common)
 	c.ClientsAPI = (*ClientsAPIService)(&c.common)
 	c.DectaSecureAPI = (*DectaSecureAPIService)(&c.common)
-	c.LimitsAPI = (*LimitsAPIService)(&c.common)
-	c.RemindersAPI = (*RemindersAPIService)(&c.common)
+	c.limitsAPI = (*LimitsAPIService)(&c.common)
+	c.remindersAPI = (*RemindersAPIService)(&c.common)
 	c.TokenAPI = (*TokenAPIService)(&c.common)
-	c.TransactionsAPI = (*TransactionsAPIService)(&c.common)
+	c.transactionsAPI = (*TransactionsAPIService)(&c.common)
 
 	return c
 }

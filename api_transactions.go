@@ -19,7 +19,14 @@ import (
 	"strings"
 )
 
-// TransactionsAPIService TransactionsAPI service
+type ITransactionsAPIService interface {
+	CardTransactions(ctx context.Context, ppan string) ApiCardTransactionsRequest
+	CardTransactionsExecute(r ApiCardTransactionsRequest) (*TransactionInfoDataArray, *http.Response, error)
+	DoTransaction(ctx context.Context, ppan string) ApiDoTransactionRequest
+	DoTransactionExecute(r ApiDoTransactionRequest) (*TransactionInfo, *http.Response, error)
+}
+
+// TransactionsAPIService transactionsAPI service
 type TransactionsAPIService service
 
 type ApiCardTransactionsRequest struct {

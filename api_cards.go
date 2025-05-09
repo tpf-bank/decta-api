@@ -19,7 +19,44 @@ import (
 	"strings"
 )
 
-// CardsAPIService CardsAPI service
+type IApiUpdateStateRequest interface {
+	TokenHeader(tokenHeader string) IApiUpdateStateRequest
+	TokenSignature(tokenSignature string) IApiUpdateStateRequest
+	StatusChange(statusChange StatusChange) IApiUpdateStateRequest
+	RequestId(requestId string) IApiUpdateStateRequest
+	Execute() (*http.Response, error)
+}
+
+type ICardsAPIService interface {
+	AssignPin(ctx context.Context, ppan string) ApiAssignPinRequest
+	AssignPinExecute(r ApiAssignPinRequest) (*http.Response, error)
+	GetCardData1(ctx context.Context, ppan string) ApiGetCardData1Request
+	GetCardData1Execute(r ApiGetCardData1Request) (*CardData1ApiDto, *http.Response, error)
+	GetCardData2(ctx context.Context, ppan string) ApiGetCardData2Request
+	GetCardData2Execute(r ApiGetCardData2Request) (*CardData2ApiDto, *http.Response, error)
+	GetCardData3(ctx context.Context, ppan string) ApiGetCardData3Request
+	GetCardData3Execute(r ApiGetCardData3Request) (*CardData3HolderApiDto, *http.Response, error)
+	GetCardData4(ctx context.Context, ppan string) ApiGetCardData4Request
+	GetCardData4Execute(r ApiGetCardData4Request) (*Data4, *http.Response, error)
+	GetCardData5(ctx context.Context, ppan string) ApiGetCardData5Request
+	GetCardData5Execute(r ApiGetCardData5Request) (*CardData2ApiDto, *http.Response, error)
+	GetInfo(ctx context.Context, ppan string) ApiGetInfoRequest
+	GetInfoExecute(r ApiGetInfoRequest) (*CardInfo, *http.Response, error)
+	GetList(ctx context.Context) ApiGetListRequest
+	GetListExecute(r ApiGetListRequest) (*CardInfoDataArray, *http.Response, error)
+	GetTspSecret(ctx context.Context, ppan string) ApiGetTspSecretRequest
+	GetTspSecretExecute(r ApiGetTspSecretRequest) (*TspSecret, *http.Response, error)
+	RenewCard(ctx context.Context, ppan string) ApiRenewCardRequest
+	RenewCardExecute(r ApiRenewCardRequest) (*CardRenewInfo, *http.Response, error)
+	ReplaceCard(ctx context.Context, ppan string) ApiReplaceCardRequest
+	ReplaceCardExecute(r ApiReplaceCardRequest) (*CardInfo, *http.Response, error)
+	UpdateCardUserDefinedFields(ctx context.Context, ppan string) ApiUpdateCardUserDefinedFieldsRequest
+	UpdateCardUserDefinedFieldsExecute(r ApiUpdateCardUserDefinedFieldsRequest) (*http.Response, error)
+	UpdateState(ctx context.Context, ppan string) IApiUpdateStateRequest
+	UpdateStateExecute(r ApiUpdateStateRequest) (*http.Response, error)
+}
+
+// CardsAPIService cardsAPI service
 type CardsAPIService service
 
 type ApiAssignPinRequest struct {
@@ -1791,24 +1828,24 @@ type ApiUpdateStateRequest struct {
 }
 
 // URL64Encoded without padding Header part of JWS token
-func (r ApiUpdateStateRequest) TokenHeader(tokenHeader string) ApiUpdateStateRequest {
+func (r ApiUpdateStateRequest) TokenHeader(tokenHeader string) IApiUpdateStateRequest {
 	r.tokenHeader = &tokenHeader
 	return r
 }
 
 // URL64Encoded without padding Signature part of JWS
-func (r ApiUpdateStateRequest) TokenSignature(tokenSignature string) ApiUpdateStateRequest {
+func (r ApiUpdateStateRequest) TokenSignature(tokenSignature string) IApiUpdateStateRequest {
 	r.tokenSignature = &tokenSignature
 	return r
 }
 
-func (r ApiUpdateStateRequest) StatusChange(statusChange StatusChange) ApiUpdateStateRequest {
+func (r ApiUpdateStateRequest) StatusChange(statusChange StatusChange) IApiUpdateStateRequest {
 	r.statusChange = &statusChange
 	return r
 }
 
 // Request ID (UUID format)
-func (r ApiUpdateStateRequest) RequestId(requestId string) ApiUpdateStateRequest {
+func (r ApiUpdateStateRequest) RequestId(requestId string) IApiUpdateStateRequest {
 	r.requestId = &requestId
 	return r
 }
@@ -1826,7 +1863,7 @@ The request allows users to block, unblock and activate cards for selected PPAN.
 	@param ppan masked card number
 	@return ApiUpdateStateRequest
 */
-func (a *CardsAPIService) UpdateState(ctx context.Context, ppan string) ApiUpdateStateRequest {
+func (a *CardsAPIService) UpdateState(ctx context.Context, ppan string) IApiUpdateStateRequest {
 	return ApiUpdateStateRequest{
 		ApiService: a,
 		ctx:        ctx,

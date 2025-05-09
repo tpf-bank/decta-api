@@ -18,7 +18,16 @@ import (
 	"strings"
 )
 
-// LimitsAPIService LimitsAPI service
+type ILimitsAPIService interface {
+	EditLimits(ctx context.Context, ppan string) ApiEditLimitsRequest
+	EditLimitsExecute(r ApiEditLimitsRequest) (*http.Response, error)
+	GetLimits(ctx context.Context, ppan string) ApiGetLimitsRequest
+	GetLimitsExecute(r ApiGetLimitsRequest) (*LimitsData, *http.Response, error)
+	GetLimitsRefData(ctx context.Context) ApiGetLimitsRefDataRequest
+	GetLimitsRefDataExecute(r ApiGetLimitsRefDataRequest) (*LimitsData, *http.Response, error)
+}
+
+// LimitsAPIService limitsAPI service
 type LimitsAPIService service
 
 type ApiEditLimitsRequest struct {

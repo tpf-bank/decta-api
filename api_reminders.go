@@ -18,7 +18,18 @@ import (
 	"strings"
 )
 
-// RemindersAPIService RemindersAPI service
+type IRemindersAPIService interface {
+	GetPinTryCounter(ctx context.Context, ppan string) ApiGetPinTryCounterRequest
+	GetPinTryCounterExecute(r ApiGetPinTryCounterRequest) (*PinTryCounterInfo, *http.Response, error)
+	RemindPanCvv(ctx context.Context, ppan string) ApiRemindPanCvvRequest
+	RemindPanCvvExecute(r ApiRemindPanCvvRequest) (*http.Response, error)
+	RemindPin(ctx context.Context, ppan string) ApiRemindPinRequest
+	RemindPinExecute(r ApiRemindPinRequest) (*http.Response, error)
+	ResetPinTryCounter(ctx context.Context, ppan string) ApiResetPinTryCounterRequest
+	ResetPinTryCounterExecute(r ApiResetPinTryCounterRequest) (*http.Response, error)
+}
+
+// RemindersAPIService remindersAPI service
 type RemindersAPIService service
 
 type ApiGetPinTryCounterRequest struct {

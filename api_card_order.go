@@ -17,7 +17,16 @@ import (
 	"net/url"
 )
 
-// CardOrderAPIService CardOrderAPI service
+type ICardOrderAPIService interface {
+	GetOrdersList(ctx context.Context) ApiGetOrdersListRequest
+	GetOrdersListExecute(r ApiGetOrdersListRequest) ([]Order, *http.Response, error)
+	OrderCard(ctx context.Context) ApiOrderCardRequest
+	OrderCardExecute(r ApiOrderCardRequest) (*OrderCardResponse, *http.Response, error)
+	OrderGiftCard(ctx context.Context) ApiOrderGiftCardRequest
+	OrderGiftCardExecute(r ApiOrderGiftCardRequest) (*GiftOrderCardResponse, *http.Response, error)
+}
+
+// CardOrderAPIService cardOrderAPI service
 type CardOrderAPIService service
 
 type ApiGetOrdersListRequest struct {

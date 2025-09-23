@@ -18,6 +18,21 @@ import (
 	"strings"
 )
 
+type IClientsAPIService interface {
+	ChangeDeliveryAddress(ctx context.Context, ppan string) ApiChangeDeliveryAddressRequest
+	ChangeDeliveryAddressExecute(r ApiChangeDeliveryAddressRequest) (*http.Response, error)
+	GetClient(ctx context.Context, clientId string) ApiGetClientRequest
+	GetClientExecute(r ApiGetClientRequest) (*ClientInfo, *http.Response, error)
+	GetClients(ctx context.Context) ApiGetClientsRequest
+	GetClientsExecute(r ApiGetClientsRequest) (*ClientInfoDataArray, *http.Response, error)
+	UpdateClientAddress(ctx context.Context, clientId string) ApiUpdateClientAddressRequest
+	UpdateClientAddressExecute(r ApiUpdateClientAddressRequest) (*http.Response, error)
+	UpdatePassphrase(ctx context.Context, ppan string) ApiUpdatePassphraseRequest
+	UpdatePassphraseExecute(r ApiUpdatePassphraseRequest) (*http.Response, error)
+	UpdatePhone(ctx context.Context, clientId string) ApiUpdatePhoneRequest
+	UpdatePhoneExecute(r ApiUpdatePhoneRequest) (*http.Response, error)
+}
+
 // ClientsAPIService ClientsAPI service
 type ClientsAPIService service
 

@@ -778,7 +778,7 @@ type ApiUpdatePhoneRequest struct {
 	clientId       string
 	tokenHeader    *string
 	tokenSignature *string
-	phoneValue     *EmailValue
+	phoneValue     *PhoneValue
 	requestId      *string
 }
 
@@ -794,7 +794,7 @@ func (r ApiUpdatePhoneRequest) TokenSignature(tokenSignature string) ApiUpdatePh
 	return r
 }
 
-func (r ApiUpdatePhoneRequest) PhoneValue(phoneValue EmailValue) ApiUpdatePhoneRequest {
+func (r ApiUpdatePhoneRequest) PhoneValue(phoneValue PhoneValue) ApiUpdatePhoneRequest {
 	r.phoneValue = &phoneValue
 	return r
 }

@@ -763,7 +763,7 @@ type ApiUpdatePhoneRequest struct {
 	clientId       string
 	tokenHeader    *string
 	tokenSignature *string
-	phoneValue     *PhoneValue
+	phoneValue     *EmailValue
 	requestId      *string
 }
 
@@ -779,7 +779,7 @@ func (r ApiUpdatePhoneRequest) TokenSignature(tokenSignature string) ApiUpdatePh
 	return r
 }
 
-func (r ApiUpdatePhoneRequest) PhoneValue(phoneValue PhoneValue) ApiUpdatePhoneRequest {
+func (r ApiUpdatePhoneRequest) PhoneValue(phoneValue EmailValue) ApiUpdatePhoneRequest {
 	r.phoneValue = &phoneValue
 	return r
 }
@@ -863,6 +863,123 @@ func (a *ClientsAPIService) UpdatePhoneExecute(r ApiUpdatePhoneRequest) (*http.R
 	}
 	// body params
 	localVarPostBody = r.phoneValue
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiUpdateEmailRequest struct {
+	ctx            context.Context
+	ApiService     *ClientsAPIService
+	clientId       string
+	tokenHeader    *string
+	tokenSignature *string
+	emailValue     *EmailValue
+	requestId      *string
+}
+
+func (r ApiUpdateEmailRequest) TokenHeader(tokenHeader string) ApiUpdateEmailRequest {
+	r.tokenHeader = &tokenHeader
+	return r
+}
+
+func (r ApiUpdateEmailRequest) TokenSignature(tokenSignature string) ApiUpdateEmailRequest {
+	r.tokenSignature = &tokenSignature
+	return r
+}
+
+func (r ApiUpdateEmailRequest) PhoneValue(emailValue EmailValue) ApiUpdateEmailRequest {
+	r.emailValue = &emailValue
+	return r
+}
+
+func (r ApiUpdateEmailRequest) RequestId(requestId string) ApiUpdateEmailRequest {
+	r.requestId = &requestId
+	return r
+}
+
+func (r ApiUpdateEmailRequest) Execute() (*http.Response, error) {
+	return r.ApiService.UpdateEmailExecute(r)
+}
+
+func (a *ClientsAPIService) UpdateEmail(ctx context.Context, clientId string) ApiUpdateEmailRequest {
+	return ApiUpdateEmailRequest{
+		ApiService: a,
+		ctx:        ctx,
+		clientId:   clientId,
+	}
+}
+
+func (a *ClientsAPIService) UpdateEmailExecute(r ApiUpdateEmailRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodPut
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClientsAPIService.UpdateEmail")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/api/clients/{clientId}/email"
+	localVarPath = strings.Replace(localVarPath, "{"+"clientId"+"}", url.PathEscape(parameterValueToString(r.clientId, "clientId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.emailValue == nil {
+		return nil, reportError("emailValue is required and must be specified")
+	}
+
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	localVarHTTPHeaderAccepts := []string{}
+
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.tokenHeader != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "token-header", r.tokenHeader, "simple", "")
+	}
+	if r.tokenSignature != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "token-signature", r.tokenSignature, "simple", "")
+	}
+	if r.requestId != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Request-Id", r.requestId, "simple", "")
+	}
+	// body params
+	localVarPostBody = r.emailValue
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err

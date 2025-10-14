@@ -31,6 +31,8 @@ type IClientsAPIService interface {
 	UpdatePassphraseExecute(r ApiUpdatePassphraseRequest) (*http.Response, error)
 	UpdatePhone(ctx context.Context, clientId string) ApiUpdatePhoneRequest
 	UpdatePhoneExecute(r ApiUpdatePhoneRequest) (*http.Response, error)
+	UpdateEmail(ctx context.Context, clientId string) ApiUpdateEmailRequest
+	UpdateEmailExecute(r ApiUpdateEmailRequest) (*http.Response, error)
 }
 
 // ClientsAPIService ClientsAPI service

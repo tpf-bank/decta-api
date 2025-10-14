@@ -928,7 +928,7 @@ func (r ApiUpdateEmailRequest) TokenSignature(tokenSignature string) ApiUpdateEm
 	return r
 }
 
-func (r ApiUpdateEmailRequest) PhoneValue(emailValue EmailValue) ApiUpdateEmailRequest {
+func (r ApiUpdateEmailRequest) EmailValue(emailValue EmailValue) ApiUpdateEmailRequest {
 	r.emailValue = &emailValue
 	return r
 }

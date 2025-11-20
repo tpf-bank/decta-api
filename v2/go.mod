@@ -1,6 +1,3 @@
-module github.com/GIT_USER_ID/GIT_REPO_ID/dectav2
+module github.com/tpf-bank/decta-api/v2
 
 go 1.18
-
-require (
-)

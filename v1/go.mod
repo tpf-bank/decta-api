@@ -1,3 +1,3 @@
-module github.com/tpf-bank/decta-api/v1
+module github.com/tpf-bank/decta-api
 
 go 1.18

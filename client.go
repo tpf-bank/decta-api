@@ -40,6 +40,7 @@ var (
 )
 
 type IAPIClient interface {
+	GetAuthorizationsAPI() IAuthorizationsAPIService
 	GetClientsAPI() IClientsAPIService
 	GetCardOrderAPI() ICardOrderAPIService
 	GetCardsAPI() ICardsAPIService
@@ -59,7 +60,7 @@ type APIClient struct {
 
 	AccountsAPI *AccountsAPIService
 
-	AuthorizationsAPI *AuthorizationsAPIService
+	authorizationsAPI IAuthorizationsAPIService
 
 	cardOrderAPI ICardOrderAPIService
 
@@ -76,6 +77,11 @@ type APIClient struct {
 	TokenAPI *TokenAPIService
 
 	transactionsAPI ITransactionsAPIService
+}
+
+// GetAuthorizationsAPI returns the authorizationsAPI service as IAuthorizationsAPIService
+func (c *APIClient) GetAuthorizationsAPI() IAuthorizationsAPIService {
+	return c.authorizationsAPI
 }
 
 // GetClientsAPI returns the clientsAPI service as IClientsAPIService
@@ -125,7 +131,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 
 	// API Services
 	c.AccountsAPI = (*AccountsAPIService)(&c.common)
-	c.AuthorizationsAPI = (*AuthorizationsAPIService)(&c.common)
+	c.authorizationsAPI = (*AuthorizationsAPIService)(&c.common)
 	c.cardOrderAPI = (*CardOrderAPIService)(&c.common)
 	c.cardsAPI = (*CardsAPIService)(&c.common)
 	c.clientsAPI = (*ClientsAPIService)(&c.common)

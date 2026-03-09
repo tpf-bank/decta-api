@@ -18,6 +18,11 @@ import (
 	"strings"
 )
 
+// IAuthorizationsAPIService is the interface for AuthorizationsAPI service
+type IAuthorizationsAPIService interface {
+	GetHoldsList(ctx context.Context, ppan string) ApiGetHoldsListRequest
+}
+
 // AuthorizationsAPIService AuthorizationsAPI service
 type AuthorizationsAPIService service
 

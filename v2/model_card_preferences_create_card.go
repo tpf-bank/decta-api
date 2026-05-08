@@ -12,8 +12,8 @@ Contact: support@decta.com
 package v2
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -31,8 +31,8 @@ type CardPreferencesCreateCard struct {
 	// Card Account. In case of supplementary card will be used to attach card to it.
 	CardAccount *string `json:"cardAccount,omitempty"`
 	// Card account currencies list ordered by priority decreasing
-	Currencies string `json:"currencies"`
-	Holder *CardholderCreateCard `json:"holder,omitempty"`
+	Currencies      []string               `json:"currencies"`
+	Holder          *CardholderCreateCard  `json:"holder,omitempty"`
 	DeliveryAddress *DeliveryAddressCreate `json:"deliveryAddress,omitempty"`
 	// Supplementary card mark
 	Supplementary string `json:"supplementary"`
@@ -60,7 +60,7 @@ type _CardPreferencesCreateCard CardPreferencesCreateCard
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCardPreferencesCreateCard(productCode string, currencies string, supplementary string) *CardPreferencesCreateCard {
+func NewCardPreferencesCreateCard(productCode string, currencies []string, supplementary string) *CardPreferencesCreateCard {
 	this := CardPreferencesCreateCard{}
 	this.ProductCode = productCode
 	this.Currencies = currencies
@@ -197,26 +197,25 @@ func (o *CardPreferencesCreateCard) SetCardAccount(v string) {
 }
 
 // GetCurrencies returns the Currencies field value
-func (o *CardPreferencesCreateCard) GetCurrencies() string {
-	if o == nil {
-		var ret string
+func (o *CardPreferencesCreateCard) GetCurrencies() []string {
+	if o == nil || IsNil(o.Currencies) {
+		var ret []string
 		return ret
 	}
-
 	return o.Currencies
 }
 
 // GetCurrenciesOk returns a tuple with the Currencies field value
 // and a boolean to check if the value has been set.
-func (o *CardPreferencesCreateCard) GetCurrenciesOk() (*string, bool) {
-	if o == nil {
+func (o *CardPreferencesCreateCard) GetCurrenciesOk() ([]string, bool) {
+	if o == nil || IsNil(o.Currencies) {
 		return nil, false
 	}
-	return &o.Currencies, true
+	return o.Currencies, true
 }
 
 // SetCurrencies sets field value
-func (o *CardPreferencesCreateCard) SetCurrencies(v string) {
+func (o *CardPreferencesCreateCard) SetCurrencies(v []string) {
 	o.Currencies = v
 }
 
@@ -565,7 +564,7 @@ func (o *CardPreferencesCreateCard) SetUserDefinedField7(v string) {
 }
 
 func (o CardPreferencesCreateCard) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -634,10 +633,10 @@ func (o *CardPreferencesCreateCard) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -693,5 +692,3 @@ func (v *NullableCardPreferencesCreateCard) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

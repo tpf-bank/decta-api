@@ -23,7 +23,7 @@ var _ MappedNullable = &Transaction{}
 // Transaction Top Up operation data
 type Transaction struct {
 	// Transaction amount. Must be positive.
-	Amount float32 `json:"amount"`
+	Amount float64 `json:"amount"`
 	// Currency alpha code according to ISO 4217
 	Ccy string `json:"ccy"`
 	// Detail information about operation amount
@@ -38,7 +38,7 @@ type _Transaction Transaction
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransaction(amount float32, ccy string, details string, type_ string) *Transaction {
+func NewTransaction(amount float64, ccy string, details string, type_ string) *Transaction {
 	this := Transaction{}
 	this.Amount = amount
 	this.Ccy = ccy
@@ -56,9 +56,9 @@ func NewTransactionWithDefaults() *Transaction {
 }
 
 // GetAmount returns the Amount field value
-func (o *Transaction) GetAmount() float32 {
+func (o *Transaction) GetAmount() float64 {
 	if o == nil {
-		var ret float32
+		var ret float64
 		return ret
 	}
 
@@ -67,7 +67,7 @@ func (o *Transaction) GetAmount() float32 {
 
 // GetAmountOk returns a tuple with the Amount field value
 // and a boolean to check if the value has been set.
-func (o *Transaction) GetAmountOk() (*float32, bool) {
+func (o *Transaction) GetAmountOk() (*float64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -75,7 +75,7 @@ func (o *Transaction) GetAmountOk() (*float32, bool) {
 }
 
 // SetAmount sets field value
-func (o *Transaction) SetAmount(v float32) {
+func (o *Transaction) SetAmount(v float64) {
 	o.Amount = v
 }
 

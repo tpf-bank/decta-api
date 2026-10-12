@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Amount** | **float32** | Transaction amount. Must be positive. | 
+**Amount** | **float64** | Transaction amount. Must be positive. | 
 **Ccy** | **string** | Currency alpha code according to ISO 4217 | 
 **Details** | **string** | Detail information about operation amount | 
 **Type** | **string** | Desired transaction type | 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewTransaction
 
-`func NewTransaction(amount float32, ccy string, details string, type_ string, ) *Transaction`
+`func NewTransaction(amount float64, ccy string, details string, type_ string, ) *Transaction`
 
 NewTransaction instantiates a new Transaction object
 This constructor will assign default values to properties that have it defined,
@@ -30,20 +30,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAmount
 
-`func (o *Transaction) GetAmount() float32`
+`func (o *Transaction) GetAmount() float64`
 
 GetAmount returns the Amount field if non-nil, zero value otherwise.
 
 ### GetAmountOk
 
-`func (o *Transaction) GetAmountOk() (*float32, bool)`
+`func (o *Transaction) GetAmountOk() (*float64, bool)`
 
 GetAmountOk returns a tuple with the Amount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmount
 
-`func (o *Transaction) SetAmount(v float32)`
+`func (o *Transaction) SetAmount(v float64)`
 
 SetAmount sets Amount field to given value.
 
